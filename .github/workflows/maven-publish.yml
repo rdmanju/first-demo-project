@@ -7,31 +7,28 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code  # Checkout the repository
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up JDK  # Set up Java Development Kit (JDK)
+    - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        java-version: '11'  # Specify the desired Java version (e.g., Java 11)
-        distribution: 'adopt'  # Specify the JDK distribution to use (e.g., 'adopt' or 'temurin')
+        java-version: '11'
+        distribution: 'adopt'
 
-    - name: Build with Maven  # Build the Maven project
-      run: mvn clean package --file pom.xml  # Use 'clean' and 'package' goals, specify 'pom.xml' file
+    - name: Build with Maven
+      run: mvn clean package --file pom.xml
 
-    - name: Run tests  # (Optional) Run any tests after building
-      run: mvn test  # Execute Maven tests
-    - name: List files in target directory
-      run: ls -l 
-           cd target 
-           ls
-           
+    - name: Debug output
+      run: |
+        ls -l    # List all files in the current directory
+        cd target && ls -l   # Change directory to 'target' and list files
 
-    - name: Upload WAR file as artifact  # Upload the generated WAR file as an artifact
+    - name: Upload WAR file as artifact
       uses: actions/upload-artifact@v2
       with:
-        name: my-app-artifact  # Specify the name of the artifact
-        path: 'target/*.jar'  # Update the path to correctly locate the WAR file(s)
+        name: my-app-artifact
+        path: target/*.war
