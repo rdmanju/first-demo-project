@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]  # Trigger workflow on push events to the 'master' branch
+    branches: [ main ]  # Trigger workflow on push events to the 'main' branch
 
 jobs:
   build:
@@ -17,9 +17,10 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '11'  # Specify the desired Java version (e.g., Java 11)
+        distribution: 'adopt'  # Specify the JDK distribution to use (e.g., 'adopt' or 'temurin')
 
     - name: Build with Maven  # Build the Maven project
-      run: mvn clean package -DskipTests=true --file pom.xml  # Use 'clean' and 'package' goals, skip tests, specify 'pom.xml' file
+      run: mvn clean package --file pom.xml  # Use 'clean' and 'package' goals, specify 'pom.xml' file
 
     - name: Run tests  # (Optional) Run any tests after building
       run: mvn test  # Execute Maven tests
