@@ -25,10 +25,10 @@ jobs:
     - name: Debug output
       run: |
         ls -l    # List all files in the current directory
-        cd target && ls -l   # Change directory to 'target' and list files
+        ls -l target/   # List files in the 'target' directory
 
-    - name: Upload WAR file as artifact
+    - name: Upload JAR file as artifact
       uses: actions/upload-artifact@v2
       with:
         name: my-app-artifact
-        path: target/*.war
+        path: target/first-demo-project1-0.0.1-SNAPSHOT.jar  # Update with the correct JAR file path
