@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]  # Trigger workflow on push events to the 'main' branch
+    branches: [ master ]  # Trigger workflow on push events to the 'master' branch
 
 jobs:
   build:
@@ -10,7 +10,8 @@ jobs:
     runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
 
     steps:
-    - uses: actions/checkout@v2  # Checkout the repository
+    - name: Checkout code  # Checkout the repository
+      uses: actions/checkout@v2
 
     - name: Set up JDK  # Set up Java Development Kit (JDK)
       uses: actions/setup-java@v2
@@ -18,7 +19,7 @@ jobs:
         java-version: '11'  # Specify the desired Java version (e.g., Java 11)
 
     - name: Build with Maven  # Build the Maven project
-      run: mvn -B package --file pom.xml
+      run: mvn clean package -DskipTests=true --file pom.xml  # Use 'clean' and 'package' goals, skip tests, specify 'pom.xml' file
 
     - name: Run tests  # (Optional) Run any tests after building
-      run: mvn test
+      run: mvn test  # Execute Maven tests
