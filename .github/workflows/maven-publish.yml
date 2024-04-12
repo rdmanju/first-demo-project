@@ -24,3 +24,9 @@ jobs:
 
     - name: Run tests  # (Optional) Run any tests after building
       run: mvn test  # Execute Maven tests
+
+    - name: Upload WAR file as artifact  # Upload the generated WAR file as an artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-app-artifact  # Specify the name of the artifact
+        path: target/*.war 
