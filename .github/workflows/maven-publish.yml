@@ -26,12 +26,12 @@ jobs:
       run: mvn test  # Execute Maven tests
     - name: List files in target directory
       run: ls -l 
-           # cd first-demo-project1-0.0.1-SNAPSHOT.jar
-           #ls
+           cd  target 
+           ls
            
 
     - name: Upload WAR file as artifact  # Upload the generated WAR file as an artifact
       uses: actions/upload-artifact@v2
       with:
         name: my-app-artifact  # Specify the name of the artifact
-        path: '/target/*.jar'  # Update the path to correctly locate the WAR file(s)
+        path: 'target/*.jar'  # Update the path to correctly locate the WAR file(s)
