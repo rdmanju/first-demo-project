@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ main ]  # Trigger workflow on push events to the 'main' branch
+    branches: [ master ]  # Trigger workflow on push events to the 'main' branch
 
 jobs:
   build:
