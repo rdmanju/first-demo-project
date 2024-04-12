@@ -29,4 +29,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: my-app-artifact  # Specify the name of the artifact
-        path: '**/target/*.war'  # Update the path to correctly locate the WAR file(s)
+        path: '/home/runner/work/first-demo-project/first-demo-project/src/main/resources/target/*.war'  # Update the path to correctly locate the WAR file(s)
