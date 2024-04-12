@@ -2,7 +2,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]  # Trigger workflow on push events to the 'main' branch
+    branches: [ master ]  # Trigger workflow on push events to the 'master' branch
 
 jobs:
   build:
@@ -29,4 +29,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: my-app-artifact  # Specify the name of the artifact
-        path: target/*.war 
+        path: '**/target/*.war'  # Update the path to correctly locate the WAR file(s)
