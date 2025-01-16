@@ -1,6 +1,6 @@
 name: Java CI with Maven
 
-on: 
+on:  
   push:
     branches: [ master ]  # Trigger workflow on push events to the 'master' branch
 
